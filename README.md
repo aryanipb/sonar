@@ -18,7 +18,7 @@ You will do 3 things:
 Project path used in this guide:
 
 ```bash
-cd /home/aryan/work/sonar/PoinTr
+cd /path/to/PoinTr
 ```
 
 If this command works, you are in the correct folder.
@@ -27,14 +27,14 @@ If this command works, you are in the correct folder.
 
 ## 2) Put the Model Checkpoint File in Place
 
-You already have:
+You should have this file in the repo:
 
-`/home/aryan/Downloads/AdaPoinTr_PCN.pth`
+`pretrained_model/AdaPoinTr_PCN.pth`
 
 Check it exists:
 
 ```bash
-ls -lh /home/aryan/Downloads/AdaPoinTr_PCN.pth
+ls -lh pretrained_model/AdaPoinTr_PCN.pth
 ```
 
 If this prints a file size, you are good.
@@ -68,7 +68,7 @@ Run this exact command:
 ```bash
 bash scripts/run_adapointr_inference.sh \
   --config cfgs/PCN_models/AdaPoinTr.yaml \
-  --ckpt /home/aryan/Downloads/AdaPoinTr_PCN.pth \
+  --ckpt pretrained_model/AdaPoinTr_PCN.pth \
   --pc demo/airplane.pcd \
   --out inference_result/adapointr_single \
   --save-vis \
@@ -99,7 +99,7 @@ Run:
 ```bash
 bash scripts/run_adapointr_inference.sh \
   --config cfgs/PCN_models/AdaPoinTr.yaml \
-  --ckpt /home/aryan/Downloads/AdaPoinTr_PCN.pth \
+  --ckpt pretrained_model/AdaPoinTr_PCN.pth \
   --pc_root demo/ \
   --out inference_result/adapointr_demo \
   --save-vis \
@@ -115,7 +115,7 @@ This processes all point clouds inside `demo/`.
 Open one HTML result in browser (example):
 
 ```bash
-xdg-open /home/aryan/work/sonar/PoinTr/inference_result/adapointr_single/airplane/actual_vs_pred_3d.html
+xdg-open inference_result/adapointr_single/airplane/actual_vs_pred_3d.html
 ```
 
 If `xdg-open` is unavailable, open the file manually in your file manager/browser.
@@ -169,7 +169,7 @@ Cause: wrong checkpoint path.
 Fix: verify file exists:
 
 ```bash
-ls -lh /home/aryan/Downloads/AdaPoinTr_PCN.pth
+ls -lh pretrained_model/AdaPoinTr_PCN.pth
 ```
 
 ### B) `CUDA was requested but is unavailable. Falling back to CPU.`
@@ -193,11 +193,11 @@ Install it:
 Single sample with everything:
 
 ```bash
-cd /home/aryan/work/sonar/PoinTr && \
+cd /path/to/PoinTr && \
 bash scripts/setup_adapointr_inference.sh --smoke-test --config cfgs/PCN_models/AdaPoinTr.yaml && \
 bash scripts/run_adapointr_inference.sh \
   --config cfgs/PCN_models/AdaPoinTr.yaml \
-  --ckpt /home/aryan/Downloads/AdaPoinTr_PCN.pth \
+  --ckpt pretrained_model/AdaPoinTr_PCN.pth \
   --pc demo/airplane.pcd \
   --out inference_result/adapointr_single \
   --save-vis \
@@ -206,5 +206,4 @@ bash scripts/run_adapointr_inference.sh \
 
 You can now open:
 
-`/home/aryan/work/sonar/PoinTr/inference_result/adapointr_single/airplane/actual_vs_pred_3d.html`
-
+`inference_result/adapointr_single/airplane/actual_vs_pred_3d.html`
